@@ -87,13 +87,23 @@ Install required packages:
 
 **[Inference-only]**
 
-```bash
-pip install torch==2.4.0 torchvision==0.17.0 --extra-index-url https://download.pytorch.org/whl/cu118
+For stable inference, install the following package versions:
 
-pip install flash-attn --no-build-isolation
+```bash
+# PyTorch and torchvision for CUDA 11.8
+pip install torch==2.4.0 torchvision==0.19.0 --extra-index-url https://download.pytorch.org/whl/cu118
+
+# Flash-attn pinned to a compatible version
+pip install flash-attn==2.7.3 --no-build-isolation --upgrade
+
+# Transformers and accelerate
 pip install transformers==4.46.3 accelerate==1.0.1
+
+# Video processing dependencies
 pip install decord ffmpeg-python imageio opencv-python
 ```
+> ⚠ **Note:** For CUDA 11.8 with `torch==2.4.0` and `torchvision==0.19.0`, use `flash-attn==2.7.3`.  
+> If you are using a different Python or CUDA version, please check the [flash-attn releases](https://github.com/Dao-AILab/flash-attention/releases/) to select the compatible wheel. Using incompatible versions may break the setup.
 
 **[Training]**
 
