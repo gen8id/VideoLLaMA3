@@ -41,8 +41,12 @@ datasets/
 # training folder
 wandb
 ckpts*
+models
+models/
 output
 output/
+outputs
+outputs/
 checkpoints
 checkpoints/
 work_dirs*/
