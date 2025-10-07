@@ -54,8 +54,8 @@ ENV HF_HOME=/workspace/models \
     TRANSFORMERS_CACHE=/workspace/models \
     HF_HUB_CACHE=/workspace/models
 
-COPY ./download-model.py /workspace/VideoLLaMA3/scripts
-COPY ./inference.py /workspace/VideoLLaMA3/scripts
+COPY ./scripts/download-model.py /workspace/VideoLLaMA3/scripts
+COPY ./scripts/inference.py /workspace/VideoLLaMA3/scripts
 
 # 모델 사전 다운로드 (선택사항 - 주석 해제하여 사용)
 #RUN python -c "from transformers import AutoModelForCausalLM, AutoProcessor; \
