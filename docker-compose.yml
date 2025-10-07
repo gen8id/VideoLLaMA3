@@ -1,0 +1,49 @@
+services:
+  videollama3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: videollama3:latest
+    container_name: videollama3
+    
+    # GPU 설정
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    ports:
+      - "80:80"        # Gradio UI
+      - "8080:8080"   # 모델 서버 API    
+    # 볼륨 마운트
+    volumes:
+      # 모델 저장 디렉토리 (호스트에서 영구 저장)
+      - ./models:/workspace/models
+      # 비디오 입력 디렉토리
+      - ./videos:/workspace/videos
+      # 출력 결과 디렉토리
+      - ./outputs:/workspace/outputs
+      # 코드 수정을 위한 소스 마운트 (선택사항)
+      - ./scripts:/workspace/VideoLLaMA3/scripts
+    
+    # 환경 변수
+    environment:
+      - CUDA_VISIBLE_DEVICES=0
+      - HF_HOME=/workspace/models
+      - TRANSFORMERS_CACHE=/workspace/models
+      - HF_HUB_CACHE=/workspace/models
+    
+    # 컨테이너 유지
+    stdin_open: true
+    tty: true
+    
+    # 재시작 정책
+    restart: unless-stopped
+    
+    # 공유 메모리 크기 증가
+    shm_size: '16gb'
+    
+    # 작업 디렉토리
+    working_dir: /workspace/VideoLLaMA3

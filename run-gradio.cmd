@@ -1,0 +1,1 @@
+docker-compose exec videollama3 python inference/launch_gradio_demo.py --server-port 8080 --interface-port 80 --model-path DAMO-NLP-SG/VideoLLaMA3-7B

@@ -1,0 +1,1 @@
+docker-compose exec videollama3 python scripts/download_model.py
