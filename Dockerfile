@@ -54,14 +54,16 @@ ENV HF_HOME=/workspace/models \
     TRANSFORMERS_CACHE=/workspace/models \
     HF_HUB_CACHE=/workspace/models
 
-COPY ./scripts/download-model.py /workspace/VideoLLaMA3/scripts
-COPY ./scripts/inference.py /workspace/VideoLLaMA3/scripts
-COPY ./scripts/gradio_simple_by_ai_companion.py /workspace/VideoLLaMA3/scripts
+#COPY ./scripts/download-model.py /workspace/VideoLLaMA3/scripts
+#COPY ./scripts/inference.py /workspace/VideoLLaMA3/scripts
+#COPY ./scripts/gradio_simple_by_ai_companion.py /workspace/VideoLLaMA3/scripts
 
 # 모델 사전 다운로드 (선택사항 - 주석 해제하여 사용)
 #RUN python -c "from transformers import AutoModelForCausalLM, AutoProcessor; \
 #    AutoModelForCausalLM.from_pretrained('DAMO-NLP-SG/VideoLLaMA3-7B', trust_remote_code=True); \
 #    AutoProcessor.from_pretrained('DAMO-NLP-SG/VideoLLaMA3-7B', trust_remote_code=True)"
+
+RUN python scripts/gradio_simple_by_ai_companion.py --server-port 80 --model-path DAMO-NLP-SG/VideoLLaMA3-7B
 
 # 포트 노출 (Gradio UI 데모)
 EXPOSE 80
