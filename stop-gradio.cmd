@@ -1,0 +1,1 @@
+docker-compose exec videollama3 pkill -f "python.*gradio"

@@ -32,7 +32,7 @@ WORKDIR /workspace/VideoLLaMA3
 # 의존성 패키지 설치
 RUN pip install --no-cache-dir -r requirements.txt
 
-# flash-attention 설치 (시간이 오래 걸림)
+# flash-attention 설치 (시간 오래 걸림)
 # Flash-attn pinned to a compatible version
 RUN pip install flash-attn==2.7.3 --no-build-isolation --upgrade
 
@@ -56,6 +56,7 @@ ENV HF_HOME=/workspace/models \
 
 COPY ./scripts/download-model.py /workspace/VideoLLaMA3/scripts
 COPY ./scripts/inference.py /workspace/VideoLLaMA3/scripts
+COPY ./scripts/gradio_simple_by_ai_companion.py /workspace/VideoLLaMA3/scripts
 
 # 모델 사전 다운로드 (선택사항 - 주석 해제하여 사용)
 #RUN python -c "from transformers import AutoModelForCausalLM, AutoProcessor; \

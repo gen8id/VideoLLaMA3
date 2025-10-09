@@ -1,1 +1,1 @@
-docker build -t video-llava:latest .
+docker build -t videollama3:latest .

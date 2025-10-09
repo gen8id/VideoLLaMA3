@@ -29,8 +29,8 @@ einops-exts==0.0.4
 bitsandbytes==0.43.3 # for cuda 124
 pydantic>=2.0
 markdown2[all]
-gradio==3.50.0
-gradio_client==0.6.1
+gradio==4.44.1
+gradio_client==1.13.3
 httpx==0.24.1
 requests
 openai

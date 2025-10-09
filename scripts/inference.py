@@ -5,7 +5,7 @@ from pathlib import Path
 from transformers import AutoModelForCausalLM, AutoProcessor
 
 def summarize_video(video_path, output_path, model_path="DAMO-NLP-SG/VideoLLaMA3-7B",
-                    fps=1, max_frames=180, max_new_tokens=512):
+                    fps=1, max_frames=180, max_new_tokens=1024):
     """
     비디오를 분석하고 요약을 텍스트 파일로 저장
     
@@ -24,7 +24,7 @@ def summarize_video(video_path, output_path, model_path="DAMO-NLP-SG/VideoLLaMA3
         model_path,
         trust_remote_code=True,
         device_map="auto",
-        torch_dtype=torch.float16,
+        torch_dtype=torch.bfloat16,
         attn_implementation="flash_attention_2",
     )
     
@@ -77,7 +77,7 @@ Provide the summary in a clear, structured format."""
     }
     
     if "pixel_values" in inputs:
-        inputs["pixel_values"] = inputs["pixel_values"].to(torch.float16)
+        inputs["pixel_values"] = inputs["pixel_values"].to(torch.bfloat16)
     
     # 추론 실행
     print("Generating summary...")
@@ -137,7 +137,7 @@ def batch_process(video_dir, output_dir, model_path="DAMO-NLP-SG/VideoLLaMA3-7B"
         model_path,
         trust_remote_code=True,
         device_map="auto",
-        torch_dtype=torch.float16,
+        torch_dtype=torch.bfloat16,
         attn_implementation="flash_attention_2",
     )
     
@@ -188,9 +188,9 @@ def batch_process(video_dir, output_dir, model_path="DAMO-NLP-SG/VideoLLaMA3-7B"
             }
             
             if "pixel_values" in inputs:
-                inputs["pixel_values"] = inputs["pixel_values"].to(torch.float16)
+                inputs["pixel_values"] = inputs["pixel_values"].to(torch.bfloat16)
             
-            with torch.autocast(device_type=device, dtype=torch.float16):
+            with torch.autocast(device_type=device, dtype=torch.bfloat16):
                 with torch.no_grad():
                     output_ids = model.generate(**inputs, max_new_tokens=max_new_tokens, do_sample=False)
             
