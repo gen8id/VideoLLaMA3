@@ -1,1 +1,1 @@
-docker build -t videollama3:latest .
+docker build --no-cache -t videollama3:latest .
