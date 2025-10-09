@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /workspace
 
 # VideoLLaMA3 저장소 클론
-RUN git clone https://github.com/DAMO-NLP-SG/VideoLLaMA3.git && \
+RUN git clone https://github.com/gen8id/VideoLLaMA3.git && \
     cd VideoLLaMA3
 
 WORKDIR /workspace/VideoLLaMA3
