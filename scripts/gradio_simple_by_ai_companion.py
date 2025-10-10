@@ -23,7 +23,7 @@ def load_model(model_path="DAMO-NLP-SG/VideoLLaMA3-7B"):
         model = AutoModelForCausalLM.from_pretrained(
             model_path,
             trust_remote_code=True,
-            device_map={"": device},
+            device_map="auto",
             torch_dtype=torch.bfloat16,
             attn_implementation="flash_attention_2",
         )

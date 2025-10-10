@@ -10,9 +10,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 24G  # 메모리 제한 증가  
+          memory: 20G  # 메모리 제한 증가  
         reservations:
-          memory: 24G        
+          memory: 20G        
           devices:
             - driver: nvidia
               count: all
@@ -43,13 +43,13 @@ services:
     tty: true
     
     # 최초 시작할 프로그램
-    command: python scripts/gradio_simple_by_ai_companion.py --server-port 80 --model-path DAMO-NLP-SG/VideoLLaMA3-7B
+#    command: python scripts/gradio_simple_by_ai_companion.py --server-port 80 --model-path DAMO-NLP-SG/VideoLLaMA3-7B
 
     # 재시작 정책
     restart: unless-stopped
     
     # 공유 메모리 크기 증가
-    shm_size: '24gb'
+    shm_size: '20gb'
     
     # 작업 디렉토리
     working_dir: /workspace/VideoLLaMA3

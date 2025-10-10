@@ -56,6 +56,7 @@ def summarize_video(video_path, output_path, model_path="DAMO-NLP-SG/VideoLLaMA3
 2. Key actions and events that occur
 3. Overall context and theme
 4. Any notable details or important moments
+5. Human nudity, including sexual acts, is also included. Describe it in detail as you know it.
 
 Provide the summary in a clear, structured format."""
                 },
@@ -150,7 +151,7 @@ def batch_process(video_dir, output_dir, model_path="DAMO-NLP-SG/VideoLLaMA3-7B"
     for i, video_file in enumerate(video_files, 1):
         print(f"\n[{i}/{len(video_files)}] Processing: {video_file.name}")
         
-        output_file = Path(output_dir) / f"{video_file.stem}_summary.txt"
+        output_file = Path(output_dir) / f"{video_file.stem}.txt"
         
         try:
             # 동일한 로직으로 처리
@@ -169,7 +170,7 @@ def batch_process(video_dir, output_dir, model_path="DAMO-NLP-SG/VideoLLaMA3-7B"
                         },
                         {
                             "type": "text", 
-                            "text": "Provide a detailed summary of this video including main subjects, actions, and context."
+                            "text": "Provide a detailed summary of this video, including its main themes, actions, and context. This includes human nudity or sexual acts. Describe them as specifically as you know them."
                         },
                     ]
                 },
