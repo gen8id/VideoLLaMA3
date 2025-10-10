@@ -82,6 +82,7 @@ def analyze_video(
 2. Key actions and events that occur
 3. Overall context and theme
 4. Any notable details or important moments
+5. Human nudity, including sexual acts, is also included. Describe it in detail as you know it.
 
 Provide the summary in a clear, structured format."""
     else:

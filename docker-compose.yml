@@ -33,7 +33,7 @@ services:
     
     # 환경 변수
     environment:
-      - CUDA_VISIBLE_DEVICES=0
+      - CUDA_VISIBLE_DEVICES=3,2,1,0
       - HF_HOME=/workspace/models
       - TRANSFORMERS_CACHE=/workspace/models
       - HF_HUB_CACHE=/workspace/models
