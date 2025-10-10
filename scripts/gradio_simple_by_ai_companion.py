@@ -294,7 +294,6 @@ if __name__ == "__main__":
     demo = create_demo()
     demo.launch(
         server_name="0.0.0.0",  # 모든 인터페이스에서 접근 가능
-        example_dir="./assets",
         server_port=args.server_port,
         share=args.share,
         allowed_paths=["/tmp", "/workspace"]  # 파일 접근 허용 경로
