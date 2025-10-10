@@ -274,27 +274,24 @@ def create_demo():
     return demo
 
 
-
 if __name__ == "__main__":
     import argparse
-    
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--model-path", type=str, default="DAMO-NLP-SG/VideoLLaMA3-7B")
-    parser.add_argument("--server-port", type=int, default=80)
-    # parser.add_argument("--interface-port", "--interface_port", type=int, default=8080)
+    parser.add_argument("--server-port", type=int, default=7860)  # ✅ 80 대신 7860 권장
     parser.add_argument("--share", action="store_true", help="Create public link")
-    
+
     args = parser.parse_args()
-    
-    # 모델 사전 로드 (선택사항)
+
     print("Pre-loading model...")
     load_model(args.model_path)
-    
-    # Gradio 실행
+
     demo = create_demo()
     demo.launch(
-        server_name="0.0.0.0",  # 모든 인터페이스에서 접근 가능
+        server_name="0.0.0.0",   # ✅ 모든 인터페이스에서 접근 허용
         server_port=args.server_port,
-        share=args.share,
-        allowed_paths=["/tmp", "/workspace"]  # 파일 접근 허용 경로
+        share=True,              # ✅ localhost 접근 불가 환경에서 필수
+        allowed_paths=["/tmp", "/workspace"],  # ✅ 안전 경로 지정
+        show_api=False,          # 선택: API 엔드포인트 숨김
     )

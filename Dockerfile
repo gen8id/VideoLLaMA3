@@ -64,9 +64,9 @@ ENV HF_HOME=/workspace/models \
 #    AutoProcessor.from_pretrained('DAMO-NLP-SG/VideoLLaMA3-7B', trust_remote_code=True)"
 
 # 포트 노출 (Gradio UI 데모)
-EXPOSE 80
+EXPOSE 7860
 # 포트 노출 (Gradio API 데모)
-EXPOSE 8080
+# EXPOSE 8080
 
 # 기본 명령어
 CMD ["/bin/bash"]
