@@ -19,7 +19,6 @@ services:
               capabilities: [gpu]
     ports:
       - "7860:7860"   # Gradio UI
-      # - "8080:8080"   # 모델 서버 API    
     # 볼륨 마운트
     volumes:
       # 모델 저장 디렉토리 (호스트에서 영구 저장)
