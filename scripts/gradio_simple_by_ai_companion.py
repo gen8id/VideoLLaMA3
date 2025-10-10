@@ -38,8 +38,8 @@ def load_model(model_path="DAMO-NLP-SG/VideoLLaMA3-7B"):
 def analyze_video(
     video_file, 
     fps=1.0, 
-    max_frames=180,
-    max_tokens=1024,
+    max_frames=120,
+    max_tokens=512,
     custom_question="",
     use_default_instruction=True,
     save_to_file=True  # 추가
@@ -199,7 +199,7 @@ def create_demo():
                     max_frames_slider = gr.Slider(
                         minimum=30,
                         maximum=180,
-                        value=180,
+                        value=120,
                         step=10,
                         label="Max Frames",
                         info="Maximum number of frames to analyze"
@@ -207,8 +207,8 @@ def create_demo():
                     
                     max_tokens_slider = gr.Slider(
                         minimum=256,
-                        maximum=2048,
-                        value=1024,
+                        maximum=1024,
+                        value=512,
                         step=256,
                         label="Max Output Tokens",
                         info="Higher = more detailed (but slower)"

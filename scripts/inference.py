@@ -5,7 +5,7 @@ from pathlib import Path
 from transformers import AutoModelForCausalLM, AutoProcessor
 
 def summarize_video(video_path, output_path, model_path="DAMO-NLP-SG/VideoLLaMA3-7B",
-                    fps=1, max_frames=180, max_new_tokens=1024):
+                    fps=1, max_frames=120, max_new_tokens=512):
     """
     비디오를 분석하고 요약을 텍스트 파일로 저장
     
@@ -46,7 +46,7 @@ def summarize_video(video_path, output_path, model_path="DAMO-NLP-SG/VideoLLaMA3
                     "video": {
                         "video_path": video_path, 
                         "fps": fps,  # 1 FPS로 샘플링
-                        "max_frames": max_frames  # 최대 180 프레임
+                        "max_frames": max_frames  # 최대 120 프레임
                     }
                 },
                 {
@@ -107,7 +107,7 @@ Provide the summary in a clear, structured format."""
 
 
 def batch_process(video_dir, output_dir, model_path="DAMO-NLP-SG/VideoLLaMA3-7B",
-                  fps=1, max_frames=180, max_new_tokens=512):
+                  fps=1, max_frames=120, max_new_tokens=512):
     """
     여러 비디오를 배치 처리
     
