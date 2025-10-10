@@ -30,7 +30,7 @@ bitsandbytes==0.43.3 # for cuda 124
 pydantic>=2.0
 markdown2[all]
 gradio==4.32.1
-gradio-client==0.15.0
+gradio-client==0.17.0
 httpx==0.24.1
 requests
 openai

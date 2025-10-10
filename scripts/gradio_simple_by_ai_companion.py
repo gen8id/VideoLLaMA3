@@ -291,7 +291,7 @@ if __name__ == "__main__":
     demo.launch(
         server_name="0.0.0.0",   # ✅ 모든 인터페이스에서 접근 허용
         server_port=args.server_port,
-        share=True,              # ✅ localhost 접근 불가 환경에서 필수
+        share=False,              # ✅ localhost 접근 불가 환경에서 필수
         allowed_paths=["/tmp", "/workspace"],  # ✅ 안전 경로 지정
         show_api=False,          # 선택: API 엔드포인트 숨김
     )
